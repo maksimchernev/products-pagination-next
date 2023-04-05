@@ -16,10 +16,8 @@ const ProductList = ({items, page, perPage}) => {
     )
 }
 
-
-
-export default ProductList
-
 ProductList.propTypes = {
     items: PropTypes.array
 }
+
+export default ProductList

@@ -9,7 +9,7 @@ const Pagination = ({totalItems, perPage, currentPage, onPageChange, prevPage, n
 
   return (
     <div className={styles.container}>
-      <Button classNames={styles.minus} onClickEvent={prevPage} Default Type='button'>-</Button>
+      <Button classNames={styles.minus} onClickEvent={prevPage} default type='button'>-</Button>
       <input 
         placeholder={currentPage} 
         className={styles.pageInput} 
@@ -17,12 +17,10 @@ const Pagination = ({totalItems, perPage, currentPage, onPageChange, prevPage, n
         onChange={onPageChange}
         type='number'
       ></input>
-      <Button classNames={styles.plus} onClickEvent={nextPage} Default Type='button'>+</Button>
+      <Button classNames={styles.plus} onClickEvent={nextPage} defaultC type='button'>+</Button>
     </div>
   )
 }
-
-export default Pagination
 
 Pagination.propTypes = {
     totalItems: PropTypes.number,
@@ -32,3 +30,5 @@ Pagination.propTypes = {
     prevPage: PropTypes.func,
     nextPage: PropTypes.func
 }
+
+export default Pagination
