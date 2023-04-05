@@ -2,16 +2,12 @@ import Pagination from '@/components/pagination'
 import ProductList from '@/components/product-list'
 import axios from 'axios'
 import Head from 'next/head'
-import Image from 'next/image'
 import PropTypes from 'prop-types'
-import { useEffect, useMemo, useState } from 'react'
+import { useState } from 'react'
 
 export default function Home({products}) {
-  console.log('products', products)
   const [page, setPage] = useState(1)
-  useEffect(()=> {
-    console.log('page', page)
-  }, [page])
+
   const prevPage = () => {
     setPage(prev => prev !== 1 ? prev-1 : 1)
   }
@@ -40,8 +36,13 @@ export default function Home({products}) {
 }
 
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps() {
   const {data :products} = await axios.get('https://jsonplaceholder.typicode.com/posts')
+  if (!products.length) {
+    return {
+      notFound: true,
+    };
+  }
   return {
     props: {
       products: products || [],
